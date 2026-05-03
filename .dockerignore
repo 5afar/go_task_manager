@@ -1,0 +1,9 @@
+bin
+vendor
+.git
+.github
+*.log
+*.out
+coverage.out
+node_modules
+**/testdata
