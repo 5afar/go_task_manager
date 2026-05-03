@@ -18,7 +18,7 @@
 - Go 1.18+
 - Docker (для локальной разработки и интеграционных тестов)
 
-Быстрый старт (локально)
+Быстрый старт
 
 1) Клонируйте репозиторий и установите зависимости:
 
@@ -28,7 +28,7 @@ cd pet
 go mod download
 ```
 
-2) Запустите локальный Redis (есть скрипт):
+2) Запустите локальный Redis:
 
 ```bash
 ./scripts/start_redis.sh
@@ -36,7 +36,7 @@ go mod download
 
 Скрипт поднимет контейнер Redis с паролем, см. `.env.example`.
 
-3) Примените миграции к вашей базе Postgres (если используете внешнюю БД):
+3) Примените миграции к вашей базе Postgres:
 
 ```bash
 go run ./cmd/migrate -dsn "postgresql://user:pass@host:5432/dbname?sslmode=disable"
@@ -68,21 +68,13 @@ go test ./... -v
 
 - Интеграционные тесты используют Docker (dockertest). Убедитесь, что Docker запущен.
 
-CI
-- В корне добавлен простой GitHub Actions workflow: [/.github/workflows/ci.yml](.github/workflows/ci.yml#L1-L200) — запускает `go fmt`, `go vet` и `go test` и поднимает сервисы Postgres/Redis в среде Actions.
-
-Структура проекта (ключевые папки)
+Структура проекта
 - `cmd/` — бинарники (`server`, `migrate`)
 - `internal/cache` — Redis клиент
 - `internal/store` — репозиторий и реализация Postgres
 - `internal/service` — бизнес-логика
 - `internal/api` — HTTP handlers
 - `migrations/` — SQL-миграции
-
-Дальше (рекомендации)
-- Добавить CI для покрытия и badge в `README`
-- Расширить интеграционные сценарии (API+auth)
-- Добавить конфигурацию для production-мониторов и healthchecks
 
 Run with Docker (Compose)
 -------------------------
@@ -115,8 +107,4 @@ docker compose down
 docker compose up -d postgres redis
 ```
 
-Важно: `docker-compose.yml` использует переменную `REDIS_PASSWORD` из файла `.env`.
-
-Если хотите, могу:
-- добавить badge статуса CI и coverage в `README`
-- расширить интеграционные тесты до проверок API
+Важно: `docker-compose.yml` использует переменную `REDIS_PASSWORD` из файла `.env`
