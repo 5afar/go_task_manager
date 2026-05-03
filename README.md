@@ -1,8 +1,5 @@
 # Go Task Manager
 
-[![CI](https://github.com/5afar/go_task_manager/actions/workflows/ci.yml/badge.svg)](https://github.com/5afar/go_task_manager/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/5afar/go_task_manager/branch/main/graph/badge.svg)](https://codecov.io/gh/5afar/go_task_manager)
-[![lint](https://github.com/5afar/go_task_manager/actions/workflows/lint.yml/badge.svg)](https://github.com/5afar/go_task_manager/actions/workflows/lint.yml)
 
 Небольшой сервис управления задачами на Go с поддержкой Postgres (хранение) и Redis (кеш).
 
